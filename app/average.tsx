@@ -15,15 +15,34 @@ export default function Average() {
     }, [])
   );
 
+  // Calculate averages
   const totalPrice = dishes.reduce((sum, dish) => sum + parseFloat(dish.price), 0);
   const avgPrice = dishes.length ? (totalPrice / dishes.length).toFixed(2) : "0.00";
+
+  const courses = ["Starter", "Main", "Dessert"] as const;
+  const avgByCourse = courses.map(course => {
+    const filtered = dishes.filter(d => d.course === course);
+    const total = filtered.reduce((sum, d) => sum + parseFloat(d.price), 0);
+    return {
+      course,
+      count: filtered.length,
+      avg: filtered.length ? (total / filtered.length).toFixed(2) : "0.00",
+    };
+  });
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>📊 Average Dish Price</Text>
-        <Text style={styles.avgText}>Number of Dishes: {dishes.length}</Text>
-        <Text style={styles.avgText}>Average Price: R{avgPrice}</Text>
+        <Text style={styles.avgText}>Total Dishes: {dishes.length}</Text>
+        <Text style={styles.avgText}>Overall Average: R{avgPrice}</Text>
+
+        {/* Averages by course */}
+        {avgByCourse.map(item => (
+          <Text key={item.course} style={styles.courseAvg}>
+            {item.course}: {item.count} dish{item.count !== 1 ? "es" : ""} | Avg: R{item.avg}
+          </Text>
+        ))}
       </View>
 
       {/* List of Dishes */}
@@ -79,6 +98,7 @@ const styles = StyleSheet.create({
   header: { alignItems: "center", paddingVertical: 20 },
   title: { fontSize: 24, fontWeight: "bold", marginBottom: 10 },
   avgText: { fontSize: 18, marginBottom: 5 },
+  courseAvg: { fontSize: 16, color: "#2e8b57", marginBottom: 3 },
   noDishes: { textAlign: "center", color: "#777", marginTop: 20, fontSize: 16 },
   card: { backgroundColor: "#fff", padding: 15, borderRadius: 12, marginBottom: 10, shadowColor: "#000", shadowOpacity: 0.1, shadowRadius: 5, elevation: 3 },
   cardHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
@@ -102,3 +122,4 @@ const styles = StyleSheet.create({
   navItem: { alignItems: "center" },
   navText: { color: "#fff", fontSize: 12, marginTop: 3 },
 });
+
