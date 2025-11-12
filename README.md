@@ -1,50 +1,78 @@
-# Welcome to your Expo app 👋
+## Changelog
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**2025-10-10 to 2025-10-21**
+### **v1.0.0 – Core Screens & Initial Features**
 
-## Get started
+#### Login Screen
+- Created a **Login screen** as the app’s entry point.  
+- Designed a clean and minimal layout to allow users to easily access the app.  
+- Included input fields for **username** and **password**, along with a **login button** for navigation.  
+- Implemented smooth transitions to guide users to the Home screen after logging in.  
+- Added basic validation to prevent empty login submissions.  
 
-1. Install dependencies
+#### Home Screen
+- Developed the **Home screen** to display a list of added dishes dynamically.  
+- Implemented a **flat list** to render all dishes fetched from the store.  
+- Added a navigation bar for quick access to the Add Dish screen and other features.  
+- Included placeholders and styling for when no dishes are available.  
+- Integrated a clean, user-friendly UI with shadows and rounded cards for modern appeal.  
 
-   ```bash
-   npm install
-   ```
+#### Add Dish Screen
+- Created the **Add Dish screen** to allow users to add new menu items.  
+- Added input fields for **Dish Name**, **Description**, **Course**, and **Price**.  
+- Included image upload functionality using **Expo Image Picker** for visual presentation of dishes.  
+- Integrated state management to store and update dishes effectively.  
+- Implemented validation to ensure all required fields are filled before submission.  
+- Styled the interface for clarity and accessibility, matching the overall app design.  
 
-2. Start the app
+#### General Enhancements
+- Ensured consistent styling and color schemes across all screens for a cohesive user experience.  
+- Structured navigation between screens using **Expo Router** for better app flow.  
+- Organized files and components into a maintainable folder structure.  
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+### **v0.1.0 – Project Setup**
+- Initialized the Expo project with `create-expo-app`.  
+- Installed required dependencies and configured initial file-based routing.  
+- Set up the app folder structure for scalability and easier feature additions.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+**2025-11-03 to 2025-11-12**
+### **v1.1.0 – Major Updates & Improvements**
 
-## Get a fresh project
+#### New Screens
+- **Average Screen:**  
+  Displays the average price per course (Starter, Main, Dessert, and Drink).  
+  Helps users quickly view pricing trends across different meal categories.
 
-When you're ready, run:
+- **Filter Screen:**  
+  Allows users to filter dishes by course type for better organization and accessibility.
 
-```bash
-npm run reset-project
-```
+#### AddDish Screen Updates
+- **feat:** replaced the `course` TextInput with a **Picker** for controlled selection.  
+  - Changed the course input from a free-text field to a structured Picker component.  
+  - Added fixed options: *Starter, Main, Dessert, Drink.*  
+  - Ensures users only select valid course types, preventing typos or invalid inputs.  
+  - Updates state correctly to integrate with the `addDish` function.  
+  - Improves form reliability and aligns with project requirements for controlled inputs.  
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+#### Home Screen Updates
+- Added **Average** button to the Home screen for quick access to the new Average screen.  
+- Added a **logo** for better branding and visual appeal.  
 
-## Learn more
+#### General Improvements
+- **Changed** the **Login screen** to a **Welcome screen** to enhance the user experience.  
+- **Added detailed comments** across all screens to improve code readability and maintainability.  
+- **Fixed the structure** of all pages for consistent formatting, cleaner imports, and better component organization.
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### **v1.0.0 – Initial Release**
+- Created the base Expo project structure.  
+- Implemented navigation system and core screens.  
+- Added dish creation and display functionality.  
+- Set up state management for dish storage.  
+- Prepared foundation for future updates (Average & Filter features).
 
-## Join the community
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
