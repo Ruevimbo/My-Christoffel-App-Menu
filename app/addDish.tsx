@@ -1,9 +1,10 @@
 import { Ionicons } from "@expo/vector-icons";
+import { Picker } from "@react-native-picker/picker"; // 👈 import picker
 import * as ImagePicker from "expo-image-picker";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Alert, Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { addDish } from "./dishesStore"; // import store
+import { addDish } from "./dishesStore";
 
 export default function AddDish() {
   const router = useRouter();
@@ -38,8 +39,8 @@ export default function AddDish() {
       image,
     };
 
-    addDish(newDish); // add to shared store
-    router.push("./Home"); // go back to Home
+    addDish(newDish);
+    router.push("./Home");
   };
 
   return (
@@ -49,18 +50,45 @@ export default function AddDish() {
 
         {/* Image Picker */}
         <TouchableOpacity style={styles.imageBox} onPress={pickImage}>
-          {image ? <Image source={{ uri: image }} style={styles.imagePreview} /> :
+          {image ? (
+            <Image source={{ uri: image }} style={styles.imagePreview} />
+          ) : (
             <View style={styles.imagePlaceholder}>
               <Ionicons name="image" size={40} color="#888" />
               <Text style={{ color: "#888", marginTop: 5 }}>Tap to pick an image</Text>
             </View>
-          }
+          )}
         </TouchableOpacity>
 
         <TextInput style={styles.input} placeholder="Dish Name" value={name} onChangeText={setName} />
-        <TextInput style={[styles.input, { height: 80 }]} placeholder="Description" value={description} onChangeText={setDescription} multiline />
-        <TextInput style={styles.input} placeholder="Course (Starter/Main/Dessert)" value={course} onChangeText={setCourse} />
-        <TextInput style={styles.input} placeholder="Price" keyboardType="numeric" value={price} onChangeText={setPrice} />
+        <TextInput
+          style={[styles.input, { height: 80 }]}
+          placeholder="Description"
+          value={description}
+          onChangeText={setDescription}
+          multiline
+        />
+
+        {/* 👇 Dropdown Picker for Course */}
+        <View style={styles.pickerContainer}>
+          <Picker
+            selectedValue={course}
+            onValueChange={(itemValue) => setCourse(itemValue)}
+            style={styles.picker}
+          >
+            <Picker.Item label="Starter" value="Starter" />
+            <Picker.Item label="Main" value="Main" />
+            <Picker.Item label="Dessert" value="Dessert" />
+          </Picker>
+        </View>
+
+        <TextInput
+          style={styles.input}
+          placeholder="Price"
+          keyboardType="numeric"
+          value={price}
+          onChangeText={setPrice}
+        />
 
         <TouchableOpacity style={styles.addBtn} onPress={handleAddDish}>
           <Ionicons name="checkmark-circle" size={20} color="#fff" />
@@ -71,7 +99,6 @@ export default function AddDish() {
   );
 }
 
-// Keep your previous styles
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#f4f4f4", paddingHorizontal: 15, paddingTop: 15 },
   title: { fontSize: 24, fontWeight: "bold", textAlign: "center", color: "#333", marginBottom: 20 },
@@ -79,6 +106,14 @@ const styles = StyleSheet.create({
   imagePlaceholder: { justifyContent: "center", alignItems: "center" },
   imagePreview: { width: "100%", height: "100%", borderRadius: 15 },
   input: { backgroundColor: "#fff", padding: 12, marginBottom: 15, borderRadius: 10, fontSize: 16, borderWidth: 1, borderColor: "#ddd" },
+  pickerContainer: {
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#ddd",
+    marginBottom: 15,
+  },
+  picker: { height: 50, width: "100%" },
   addBtn: { flexDirection: "row", backgroundColor: "#2e8b57", padding: 15, borderRadius: 25, alignItems: "center", justifyContent: "center", marginTop: 10 },
   addText: { color: "#fff", fontWeight: "bold", marginLeft: 8, fontSize: 16 },
 });
