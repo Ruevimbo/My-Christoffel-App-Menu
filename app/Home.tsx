@@ -40,10 +40,25 @@ export default function Home() {
     ]);
   };
 
+  // Calculate average price
+  const getAveragePrice = () => {
+    if (dishes.length === 0) return 0;
+    const total = dishes.reduce((sum, dish) => sum + Number(dish.price), 0);
+    return (total / dishes.length).toFixed(2);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>🍽️ Menu Dishes</Text>
       <Text style={styles.countText}>Total Dishes: {dishes.length}</Text>
+
+      {/* Average Price Card */}
+      {dishes.length > 0 && (
+        <View style={styles.averageCard}>
+          <Text style={styles.averageText}>Average Price</Text>
+          <Text style={styles.averageAmount}>R{getAveragePrice()}</Text>
+        </View>
+      )}
 
       {dishes.length === 0 ? (
         <Text style={styles.noDishes}>No dishes yet. Add one!</Text>
@@ -141,6 +156,29 @@ const styles = StyleSheet.create({
   navBar: { flexDirection: "row", justifyContent: "space-around", backgroundColor: "#2e8b57", paddingVertical: 10, borderRadius: 20, marginBottom: 10 },
   navItem: { alignItems: "center" },
   navText: { color: "#fff", fontSize: 12, marginTop: 3 },
+
+  // Average Card Styles
+  averageCard: {
+    backgroundColor: "#e0f7e9",
+    padding: 15,
+    borderRadius: 12,
+    marginBottom: 15,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
+  },
+  averageText: {
+    fontSize: 14,
+    color: "#555",
+    marginBottom: 5,
+  },
+  averageAmount: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#2e8b57",
+  },
 });
 
 
