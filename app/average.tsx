@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useFocusEffect, useRouter } from "expo-router";
 import React, { useCallback, useState } from "react";
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Dish, getDishes } from "./dishesStore";
 
 export default function Average() {
@@ -20,11 +20,33 @@ export default function Average() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.content}>
+      <View style={styles.header}>
         <Text style={styles.title}>📊 Average Dish Price</Text>
         <Text style={styles.avgText}>Number of Dishes: {dishes.length}</Text>
         <Text style={styles.avgText}>Average Price: R{avgPrice}</Text>
       </View>
+
+      {/* List of Dishes */}
+      {dishes.length === 0 ? (
+        <Text style={styles.noDishes}>No dishes added yet.</Text>
+      ) : (
+        <FlatList
+          data={dishes}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={{ padding: 15 }}
+          renderItem={({ item, index }) => (
+            <View style={styles.card}>
+              <View style={styles.cardHeader}>
+                <Text style={styles.dishTitle}>{index + 1}. {item.name}</Text>
+                <Text style={styles.price}>R{item.price}</Text>
+              </View>
+              {item.image && <Image source={{ uri: item.image }} style={styles.dishImage} />}
+              <Text style={styles.description}>{item.description}</Text>
+              <Text style={styles.courseTag}>{item.course}</Text>
+            </View>
+          )}
+        />
+      )}
 
       {/* Bottom Navigation */}
       <View style={styles.navBar}>
@@ -54,9 +76,17 @@ export default function Average() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#f4f4f4" },
-  content: { flex: 1, justifyContent: "center", alignItems: "center", paddingBottom: 80 }, // paddingBottom prevents overlap with nav
-  title: { fontSize: 24, fontWeight: "bold", marginBottom: 20 },
-  avgText: { fontSize: 18, marginBottom: 10 },
+  header: { alignItems: "center", paddingVertical: 20 },
+  title: { fontSize: 24, fontWeight: "bold", marginBottom: 10 },
+  avgText: { fontSize: 18, marginBottom: 5 },
+  noDishes: { textAlign: "center", color: "#777", marginTop: 20, fontSize: 16 },
+  card: { backgroundColor: "#fff", padding: 15, borderRadius: 12, marginBottom: 10, shadowColor: "#000", shadowOpacity: 0.1, shadowRadius: 5, elevation: 3 },
+  cardHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
+  dishTitle: { fontWeight: "bold", fontSize: 16, color: "#333" },
+  price: { fontWeight: "600", color: "#2e8b57" },
+  dishImage: { width: "100%", height: 120, borderRadius: 10, marginTop: 10 },
+  description: { color: "#555", marginTop: 8 },
+  courseTag: { marginTop: 6, color: "#888", fontStyle: "italic" },
   navBar: {
     flexDirection: "row",
     justifyContent: "space-around",
