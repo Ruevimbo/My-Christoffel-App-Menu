@@ -95,8 +95,44 @@ export default function AddDish() {
           <Text style={styles.addText}>Add to Menu</Text>
         </TouchableOpacity>
       </ScrollView>
-    </SafeAreaView>
-  );
+    
+
+  {/* Bottom Navigation */}
+        <View style={styles.navBar}>
+          <TouchableOpacity
+            onPress={() => router.push("/Home")}
+            style={styles.navItem}
+          >
+            <Ionicons name="home" size={24} color="#fff" />
+            <Text style={styles.navText}>Home</Text>
+          </TouchableOpacity>
+  
+          <TouchableOpacity
+            onPress={() => router.push("/addDish")}
+            style={styles.navItem}
+          >
+            <Ionicons name="add" size={24} color="#fff" />
+            <Text style={styles.navText}>Add</Text>
+          </TouchableOpacity>
+  
+          <TouchableOpacity
+            onPress={() => router.push("/filter")}
+            style={styles.navItem}
+          >
+            <Ionicons name="filter" size={24} color="#fff" />
+            <Text style={styles.navText}>Filter</Text>
+          </TouchableOpacity>
+  
+          <TouchableOpacity
+            onPress={() => router.push("/average")}
+            style={styles.navItem}
+          >
+            <Ionicons name="stats-chart" size={24} color="#fff" />
+            <Text style={styles.navText}>Average</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -116,5 +152,8 @@ const styles = StyleSheet.create({
   picker: { height: 50, width: "100%" },
   addBtn: { flexDirection: "row", backgroundColor: "#2e8b57", padding: 15, borderRadius: 25, alignItems: "center", justifyContent: "center", marginTop: 10 },
   addText: { color: "#fff", fontWeight: "bold", marginLeft: 8, fontSize: 16 },
+  navBar: { flexDirection: "row", justifyContent: "space-around", backgroundColor: "#2e8b57", paddingVertical: 10, borderRadius: 20, marginBottom: 10 },
+  navItem: { alignItems: "center" },
+  navText: { color: "#fff", fontSize: 12, marginTop: 3 },
 });
 

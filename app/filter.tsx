@@ -1,7 +1,8 @@
+import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { FlatList, Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Dish, getFilteredDishes } from "./dishesStore"; // get all dishes
+import { FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Dish, getFilteredDishes } from "./dishesStore";
 
 export default function Filter() {
   const router = useRouter();
@@ -11,37 +12,30 @@ export default function Filter() {
 
   const courses = ["Starter", "Main", "Dessert"];
 
-  // Load all dishes when the screen opens
   useEffect(() => {
-    const allDishes = getFilteredDishes(); // get everything
+    const allDishes = getFilteredDishes();
     setDishes(allDishes);
-    setFilteredDishes(allDishes); // show all by default
+    setFilteredDishes(allDishes);
   }, []);
 
   const toggleCourse = (course: string) => {
-    let updated = [];
-    if (selectedCourses.includes(course)) {
-      updated = selectedCourses.filter((c) => c !== course);
-    } else {
-      updated = [...selectedCourses, course];
-    }
+    let updated = selectedCourses.includes(course)
+      ? selectedCourses.filter((c) => c !== course)
+      : [...selectedCourses, course];
+
     setSelectedCourses(updated);
 
-    // Update filtered dishes live
-    if (updated.length === 0) {
-      setFilteredDishes(dishes); // show all if nothing selected
-    } else {
-      setFilteredDishes(dishes.filter((d) => updated.includes(d.course)));
-    }
+    setFilteredDishes(
+      updated.length === 0 ? dishes : dishes.filter((d) => updated.includes(d.course))
+    );
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={{ padding: 20 }}>
+      {/* Filter Buttons */}
+      <View style={styles.filterContainer}>
         <Text style={styles.title}>🍽️ Filter by Course</Text>
-
-        {/* Filter Buttons */}
-        <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "center", marginBottom: 20 }}>
+        <View style={styles.buttonRow}>
           {courses.map((course) => (
             <TouchableOpacity
               key={course}
@@ -54,35 +48,61 @@ export default function Filter() {
             </TouchableOpacity>
           ))}
         </View>
+      </View>
 
-        {/* Filtered Dishes */}
-        {filteredDishes.length === 0 ? (
-          <Text style={styles.noDishes}>No dishes to show</Text>
-        ) : (
-          <FlatList
-            data={filteredDishes}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item, index }) => (
-              <View style={styles.card}>
-                <View style={styles.cardHeader}>
-                  <Text style={styles.dishTitle}>{index + 1}. {item.name}</Text>
-                  <Text style={styles.price}>R{item.price}</Text>
-                </View>
-                {item.image && <Image source={{ uri: item.image }} style={styles.dishImage} />}
-                <Text style={styles.description}>{item.description}</Text>
-                <Text style={styles.courseTag}>{item.course}</Text>
+      {/* Dish List */}
+      {filteredDishes.length === 0 ? (
+        <Text style={styles.noDishes}>No dishes to show</Text>
+      ) : (
+        <FlatList
+          data={filteredDishes}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={{ padding: 20, paddingBottom: 80 }}
+          renderItem={({ item, index }) => (
+            <View style={styles.card}>
+              <View style={styles.cardHeader}>
+                <Text style={styles.dishTitle}>{index + 1}. {item.name}</Text>
+                <Text style={styles.price}>R{item.price}</Text>
               </View>
-            )}
-          />
-        )}
-      </ScrollView>
+              {item.image && <Image source={{ uri: item.image }} style={styles.dishImage} />}
+              <Text style={styles.description}>{item.description}</Text>
+              <Text style={styles.courseTag}>{item.course}</Text>
+            </View>
+          )}
+        />
+      )}
+
+      {/* Bottom Navigation */}
+      <View style={styles.navBar}>
+        <TouchableOpacity onPress={() => router.push("/Home")} style={styles.navItem}>
+          <Ionicons name="home" size={24} color="#fff" />
+          <Text style={styles.navText}>Home</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => router.push("/addDish")} style={styles.navItem}>
+          <Ionicons name="add" size={24} color="#fff" />
+          <Text style={styles.navText}>Add</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => router.push("/filter")} style={styles.navItem}>
+          <Ionicons name="filter" size={24} color="#fff" />
+          <Text style={styles.navText}>Filter</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => router.push("/average")} style={styles.navItem}>
+          <Ionicons name="stats-chart" size={24} color="#fff" />
+          <Text style={styles.navText}>Average</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#f4f4f4" },
-  title: { fontSize: 24, fontWeight: "bold", marginBottom: 20, textAlign: "center", color: "#333" },
+  filterContainer: { padding: 20 },
+  title: { fontSize: 24, fontWeight: "bold", marginBottom: 10, textAlign: "center", color: "#333" },
+  buttonRow: { flexDirection: "row", flexWrap: "wrap", justifyContent: "center", marginBottom: 10 },
   courseBtn: { backgroundColor: "#fff", padding: 10, borderRadius: 15, margin: 5, borderWidth: 1, borderColor: "#ddd" },
   courseSelected: { backgroundColor: "#2e8b57" },
   courseText: { fontSize: 16, textAlign: "center", color: "#333" },
@@ -95,4 +115,7 @@ const styles = StyleSheet.create({
   dishImage: { width: "100%", height: 120, borderRadius: 10, marginTop: 10 },
   description: { color: "#555", marginTop: 8 },
   courseTag: { marginTop: 6, color: "#888", fontStyle: "italic" },
+  navBar: { flexDirection: "row", justifyContent: "space-around", backgroundColor: "#2e8b57", paddingVertical: 10, borderRadius: 20, position: "absolute", bottom: 10, left: 10, right: 10 },
+  navItem: { alignItems: "center" },
+  navText: { color: "#fff", fontSize: 12, marginTop: 3 },
 });
