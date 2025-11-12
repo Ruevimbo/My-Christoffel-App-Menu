@@ -31,6 +31,7 @@ export default function Average() {
   });
 
   return (
+    
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>📊 Average Dish Price</Text>

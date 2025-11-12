@@ -49,8 +49,19 @@ export default function Home() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>🍽️ Menu Dishes</Text>
-      <Text style={styles.countText}>Total Dishes: {dishes.length}</Text>
+      {/* Header with Logo */}
+      <View style={styles.header}>
+        <Image
+          source={{
+            uri: "https://th.bing.com/th/id/R.dc8ab556a5d38ee1b137683abeaeeda2?rik=0BRx0tjrTa%2fdLQ&riu=http%3a%2f%2fwww.freepngclipart.com%2fdownload%2fchef%2f59146-chef-cartoon-free-download-png-hd.png&ehk=oBZebtmHfdVgZGElvsb9yE8Nt7uouaeY0YfFoYNza2E%3d&risl=&pid=ImgRaw&r=0",
+          }}
+          style={styles.logo}
+        />
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>🍽️ Menu Dishes</Text>
+          <Text style={styles.countText}>Total Dishes: {dishes.length}</Text>
+        </View>
+      </View>
 
       {/* Average Price Card */}
       {dishes.length > 0 && (
@@ -139,10 +150,34 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#f4f4f4", paddingHorizontal: 15, paddingTop: 15 },
-  title: { fontSize: 24, fontWeight: "bold", textAlign: "center", color: "#333", marginBottom: 5 },
-  countText: { textAlign: "center", color: "#555", marginBottom: 15 },
+
+  // Header with logo
+  header: { flexDirection: "row", alignItems: "center", marginBottom: 15, position: "relative" },
+
+  logo: { width: 60, height: 60, borderRadius: 30 },
+
+  // Text container centered
+  textContainer: { position: "absolute", left: 0, right: 0, alignItems: "center" },
+
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#333",
+  },
+  countText: { color: "#555", marginTop: 2 },
+
   noDishes: { textAlign: "center", color: "#777", marginTop: 30 },
-  card: { backgroundColor: "#fff", padding: 15, borderRadius: 12, marginBottom: 10, shadowColor: "#000", shadowOpacity: 0.1, shadowRadius: 5, elevation: 3 },
+
+  card: {
+    backgroundColor: "#fff",
+    padding: 15,
+    borderRadius: 12,
+    marginBottom: 10,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
+  },
   cardHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
   dishTitle: { fontWeight: "bold", fontSize: 16, color: "#333" },
   price: { fontWeight: "600", color: "#2e8b57" },
