@@ -3,7 +3,17 @@ import { Picker } from "@react-native-picker/picker"; // 👈 import picker
 import * as ImagePicker from "expo-image-picker";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Alert, Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+   Alert, 
+   Image, 
+   SafeAreaView, 
+   ScrollView, 
+   StyleSheet, 
+   Text, 
+   TextInput, 
+   TouchableOpacity, 
+   View 
+  } from "react-native";
 import { addDish } from "./dishesStore";
 
 export default function AddDish() {
@@ -136,12 +146,45 @@ export default function AddDish() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f4f4f4", paddingHorizontal: 15, paddingTop: 15 },
-  title: { fontSize: 24, fontWeight: "bold", textAlign: "center", color: "#333", marginBottom: 20 },
-  imageBox: { width: "100%", height: 180, backgroundColor: "#fff", borderRadius: 15, marginBottom: 20, overflow: "hidden", justifyContent: "center", alignItems: "center", borderWidth: 1, borderColor: "#ddd" },
-  imagePlaceholder: { justifyContent: "center", alignItems: "center" },
-  imagePreview: { width: "100%", height: "100%", borderRadius: 15 },
-  input: { backgroundColor: "#fff", padding: 12, marginBottom: 15, borderRadius: 10, fontSize: 16, borderWidth: 1, borderColor: "#ddd" },
+  container: { 
+    flex: 1, 
+    backgroundColor: "#f4f4f4", 
+    paddingHorizontal: 15, 
+    paddingTop: 15 
+  },
+  title: { 
+    fontSize: 24, 
+    fontWeight: "bold", 
+    textAlign: "center", 
+    color: "#333", 
+    marginBottom: 20 },
+  imageBox: { 
+    width: "100%", 
+    height: 180, 
+    backgroundColor: "#fff", 
+    borderRadius: 15, 
+    marginBottom: 20, 
+    overflow: "hidden", 
+    justifyContent: "center", 
+    alignItems: "center", 
+    borderWidth: 1, 
+    borderColor: "#ddd" 
+  },
+  imagePlaceholder: { 
+    justifyContent: "center", 
+    alignItems: "center" 
+  },
+  imagePreview: { 
+    width: "100%", 
+    height: "100%", 
+    borderRadius: 15 
+  },
+  input: { 
+    backgroundColor: "#fff", 
+    padding: 12, marginBottom: 15, 
+    borderRadius: 10, fontSize: 16, 
+    borderWidth: 1, borderColor: "#ddd" 
+  },
   pickerContainer: {
     backgroundColor: "#fff",
     borderRadius: 10,
@@ -149,11 +192,38 @@ const styles = StyleSheet.create({
     borderColor: "#ddd",
     marginBottom: 15,
   },
-  picker: { height: 50, width: "100%" },
-  addBtn: { flexDirection: "row", backgroundColor: "#2e8b57", padding: 15, borderRadius: 25, alignItems: "center", justifyContent: "center", marginTop: 10 },
-  addText: { color: "#fff", fontWeight: "bold", marginLeft: 8, fontSize: 16 },
-  navBar: { flexDirection: "row", justifyContent: "space-around", backgroundColor: "#2e8b57", paddingVertical: 10, borderRadius: 20, marginBottom: 10 },
-  navItem: { alignItems: "center" },
-  navText: { color: "#fff", fontSize: 12, marginTop: 3 },
+  picker: { 
+    height: 50, 
+    width: "100%" 
+  },
+  addBtn: { 
+    flexDirection: "row", 
+    backgroundColor: "#2e8b57", 
+    padding: 15, 
+    borderRadius: 25, 
+    alignItems: "center", 
+    justifyContent: "center", 
+    marginTop: 10 },
+  addText: { 
+    color: "#fff", 
+    fontWeight: "bold", 
+    marginLeft: 8, 
+    fontSize: 16 
+  },
+  navBar: { 
+    flexDirection: "row", 
+    justifyContent: "space-around", 
+    backgroundColor: "#2e8b57", 
+    paddingVertical: 10, 
+    borderRadius: 20, 
+    marginBottom: 10 
+  },
+  navItem: { 
+    alignItems: "center" 
+  },
+  navText: { 
+    color: "#fff", 
+    fontSize: 12, 
+    marginTop: 3 },
 });
 

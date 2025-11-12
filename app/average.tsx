@@ -1,7 +1,15 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useFocusEffect, useRouter } from "expo-router";
 import React, { useCallback, useState } from "react";
-import { FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { 
+  FlatList, 
+  Image, 
+  SafeAreaView, 
+  StyleSheet, 
+  Text, 
+  TouchableOpacity, 
+  View 
+} from "react-native";
 import { Dish, getDishes } from "./dishesStore";
 
 export default function Average() {
@@ -95,19 +103,72 @@ export default function Average() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f4f4f4" },
-  header: { alignItems: "center", paddingVertical: 20 },
-  title: { fontSize: 24, fontWeight: "bold", marginBottom: 10 },
-  avgText: { fontSize: 18, marginBottom: 5 },
-  courseAvg: { fontSize: 16, color: "#2e8b57", marginBottom: 3 },
-  noDishes: { textAlign: "center", color: "#777", marginTop: 20, fontSize: 16 },
-  card: { backgroundColor: "#fff", padding: 15, borderRadius: 12, marginBottom: 10, shadowColor: "#000", shadowOpacity: 0.1, shadowRadius: 5, elevation: 3 },
-  cardHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
-  dishTitle: { fontWeight: "bold", fontSize: 16, color: "#333" },
-  price: { fontWeight: "600", color: "#2e8b57" },
-  dishImage: { width: "100%", height: 120, borderRadius: 10, marginTop: 10 },
-  description: { color: "#555", marginTop: 8 },
-  courseTag: { marginTop: 6, color: "#888", fontStyle: "italic" },
+  container: {
+     flex: 1,
+     backgroundColor: "#f4f4f4" 
+    },
+  header: {
+     alignItems: "center", 
+     paddingVertical: 20 
+    },
+  title: {
+     fontSize: 24, 
+     fontWeight: "bold",
+      marginBottom: 10 
+    },
+  avgText: { 
+    fontSize: 18, 
+    marginBottom: 5 
+  },
+  courseAvg: { 
+    fontSize: 16, 
+    color: "#2e8b57", 
+    marginBottom: 3 
+  },
+  noDishes: { 
+    textAlign: "center", 
+    color: "#777", 
+    marginTop: 20, 
+    fontSize: 16 
+  },
+  card: { 
+    backgroundColor: "#fff", 
+    padding: 15, 
+    borderRadius: 12, 
+    marginBottom: 10, 
+    shadowColor: "#000", 
+    shadowOpacity: 0.1, 
+    shadowRadius: 5, 
+    elevation: 3 },
+  cardHeader: { 
+    flexDirection: "row", 
+    justifyContent: "space-between", 
+    alignItems: "center" 
+  },
+  dishTitle: { 
+    fontWeight: "bold", 
+    fontSize: 16, 
+    color: "#333" 
+  },
+  price: { 
+    fontWeight: "600", 
+    color: "#2e8b57" 
+  },
+  dishImage: { 
+    width: "100%", 
+    height: 120, 
+    borderRadius: 10, 
+    marginTop: 10 
+  },
+  description: { 
+    color: "#555", 
+    
+    marginTop: 8 },
+  courseTag: { 
+    marginTop: 6, 
+    color: "#888", 
+    fontStyle: "italic" 
+  },
   navBar: {
     flexDirection: "row",
     justifyContent: "space-around",
@@ -120,7 +181,13 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
   },
-  navItem: { alignItems: "center" },
-  navText: { color: "#fff", fontSize: 12, marginTop: 3 },
+  navItem: { 
+    alignItems: "center" 
+  },
+  navText: { 
+    color: "#fff", 
+    fontSize: 12, 
+    marginTop: 3 
+  },
 });
 

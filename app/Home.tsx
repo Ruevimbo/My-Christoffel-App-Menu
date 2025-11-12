@@ -149,24 +149,47 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f4f4f4", paddingHorizontal: 15, paddingTop: 15 },
+  container: { 
+    flex: 1, 
+    backgroundColor: "#f4f4f4", 
+    paddingHorizontal: 15, 
+    paddingTop: 15 },
 
   // Header with logo
-  header: { flexDirection: "row", alignItems: "center", marginBottom: 15, position: "relative" },
+  header: { 
+    flexDirection: "row", 
+    alignItems: "center", 
+    marginBottom: 15, 
+    position: "relative" 
+  },
 
-  logo: { width: 60, height: 60, borderRadius: 30 },
+  logo: { 
+    width: 60, 
+    height: 60, 
+    borderRadius: 30 
+  },
 
   // Text container centered
-  textContainer: { position: "absolute", left: 0, right: 0, alignItems: "center" },
+  textContainer: {
+     position: "absolute", 
+     left: 0, right: 0, 
+     alignItems: "center" 
+    },
 
   title: {
     fontSize: 24,
     fontWeight: "bold",
     color: "#333",
   },
-  countText: { color: "#555", marginTop: 2 },
+  countText: { 
+    color: "#555", 
+    marginTop: 2 
+  },
 
-  noDishes: { textAlign: "center", color: "#777", marginTop: 30 },
+  noDishes: { 
+    textAlign: "center", 
+    color: "#777", 
+    marginTop: 30 },
 
   card: {
     backgroundColor: "#fff",
@@ -178,19 +201,75 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 3,
   },
-  cardHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
-  dishTitle: { fontWeight: "bold", fontSize: 16, color: "#333" },
-  price: { fontWeight: "600", color: "#2e8b57" },
-  dishImage: { width: "100%", height: 120, borderRadius: 10, marginTop: 10 },
-  description: { color: "#555", marginTop: 8 },
-  courseTag: { marginTop: 6, color: "#888", fontStyle: "italic" },
-  deleteBtn: { marginTop: 10, backgroundColor: "#ff4d4d", padding: 8, borderRadius: 10, alignItems: "center" },
-  deleteText: { color: "#fff", fontWeight: "bold" },
-  addBtn: { flexDirection: "row", backgroundColor: "#2e8b57", padding: 15, borderRadius: 25, alignItems: "center", justifyContent: "center", marginVertical: 10 },
-  addText: { color: "#fff", fontWeight: "bold", marginLeft: 8 },
-  navBar: { flexDirection: "row", justifyContent: "space-around", backgroundColor: "#2e8b57", paddingVertical: 10, borderRadius: 20, marginBottom: 10 },
-  navItem: { alignItems: "center" },
-  navText: { color: "#fff", fontSize: 12, marginTop: 3 },
+  cardHeader: { 
+    flexDirection: "row", 
+    justifyContent: "space-between", 
+    alignItems: "center" 
+  },
+  dishTitle: { 
+    fontWeight: "bold", 
+    fontSize: 16, 
+    color: "#333" 
+  },
+  price: { 
+    fontWeight: "600", 
+    color: "#2e8b57" 
+  },
+  dishImage: { 
+    width: "100%", 
+    height: 120, 
+    borderRadius: 10, 
+    marginTop: 10 
+  },
+  description: { 
+    color: "#555", 
+    marginTop: 8 
+  },
+  courseTag: { 
+    marginTop: 6, 
+    color: "#888", 
+    fontStyle: "italic" 
+  },
+  deleteBtn: { 
+    marginTop: 10, 
+    backgroundColor: "#ff4d4d", 
+    padding: 8, borderRadius: 10, 
+    alignItems: "center" 
+  },
+  deleteText: { 
+    color: "#fff", 
+    fontWeight: "bold" 
+  },
+  addBtn: { 
+    flexDirection: "row", 
+    backgroundColor: "#2e8b57", 
+    padding: 15, 
+    borderRadius: 25, 
+    alignItems: "center", 
+    justifyContent: "center", 
+    marginVertical: 10 
+  },
+  addText: { 
+    color: "#fff", 
+    fontWeight: "bold", 
+    marginLeft: 8 
+  },
+  navBar: { 
+    flexDirection: "row", 
+    justifyContent: "space-around", 
+    backgroundColor: "#2e8b57", 
+    paddingVertical: 10, 
+    borderRadius: 20, 
+    marginBottom: 10 
+  },
+  navItem: { 
+    alignItems: "center" 
+  },
+  navText: { 
+    color: "#fff", 
+    fontSize: 12, 
+    marginTop: 3 
+  },
 
   // Average Card Styles
   averageCard: {

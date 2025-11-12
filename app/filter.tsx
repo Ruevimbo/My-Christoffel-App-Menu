@@ -1,7 +1,15 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { 
+  FlatList, 
+  Image, 
+  SafeAreaView, 
+  StyleSheet, 
+  Text, 
+  TouchableOpacity, 
+  View 
+} from "react-native";
 import { Dish, getFilteredDishes } from "./dishesStore";
 
 export default function Filter() {
@@ -99,23 +107,106 @@ export default function Filter() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f4f4f4" },
-  filterContainer: { padding: 20 },
-  title: { fontSize: 24, fontWeight: "bold", marginBottom: 10, textAlign: "center", color: "#333" },
-  buttonRow: { flexDirection: "row", flexWrap: "wrap", justifyContent: "center", marginBottom: 10 },
-  courseBtn: { backgroundColor: "#fff", padding: 10, borderRadius: 15, margin: 5, borderWidth: 1, borderColor: "#ddd" },
-  courseSelected: { backgroundColor: "#2e8b57" },
-  courseText: { fontSize: 16, textAlign: "center", color: "#333" },
-  courseTextSelected: { color: "#fff", fontWeight: "bold" },
-  noDishes: { textAlign: "center", color: "#777", marginTop: 20, fontSize: 16 },
-  card: { backgroundColor: "#fff", padding: 15, borderRadius: 12, marginBottom: 10, shadowColor: "#000", shadowOpacity: 0.1, shadowRadius: 5, elevation: 3 },
-  cardHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
-  dishTitle: { fontWeight: "bold", fontSize: 16, color: "#333" },
-  price: { fontWeight: "600", color: "#2e8b57" },
-  dishImage: { width: "100%", height: 120, borderRadius: 10, marginTop: 10 },
-  description: { color: "#555", marginTop: 8 },
-  courseTag: { marginTop: 6, color: "#888", fontStyle: "italic" },
-  navBar: { flexDirection: "row", justifyContent: "space-around", backgroundColor: "#2e8b57", paddingVertical: 10, borderRadius: 20, position: "absolute", bottom: 10, left: 10, right: 10 },
-  navItem: { alignItems: "center" },
-  navText: { color: "#fff", fontSize: 12, marginTop: 3 },
+  container: { 
+    flex: 1, 
+    backgroundColor: "#f4f4f4" 
+  },
+  filterContainer: { 
+    padding: 20 },
+  title: { 
+    fontSize: 24, 
+    fontWeight: "bold", 
+    marginBottom: 10, 
+    textAlign: "center", 
+    color: "#333" 
+  },
+  buttonRow: { 
+    flexDirection: "row", 
+    flexWrap: "wrap", 
+    justifyContent: "center", 
+    marginBottom: 10 
+  },
+  courseBtn: { 
+    backgroundColor: "#fff", 
+    padding: 10, 
+    borderRadius: 15, 
+    margin: 5, 
+    borderWidth: 1, 
+    borderColor: "#ddd" 
+  },
+  courseSelected: { 
+    backgroundColor: "#2e8b57" 
+  },
+  courseText: { 
+    fontSize: 16, 
+    textAlign: "center", 
+    color: "#333" 
+  },
+  courseTextSelected: { 
+    color: "#fff", 
+    fontWeight: "bold" 
+  },
+  noDishes: { 
+    textAlign: "center", 
+    color: "#777", 
+    marginTop: 20, 
+    fontSize: 16 
+  },
+  card: { 
+    backgroundColor: "#fff", 
+    padding: 15, 
+    borderRadius: 12, 
+    marginBottom: 10, 
+    shadowColor: "#000", 
+    shadowOpacity: 0.1, 
+    shadowRadius: 5, 
+    elevation: 3 
+  },
+  cardHeader: { 
+    flexDirection: "row", 
+    justifyContent: "space-between", 
+    alignItems: "center" 
+  },
+  dishTitle: { 
+    fontWeight: "bold", 
+    fontSize: 16, 
+    color: "#333" 
+  },
+  price: { 
+    fontWeight: "600", 
+    color: "#2e8b57" 
+  },
+  dishImage: { 
+    width: "100%", 
+    height: 120, 
+    borderRadius: 10, 
+    marginTop: 10 
+  },
+  description: { 
+    color: "#555", 
+    marginTop: 8 
+  },
+  courseTag: { 
+    marginTop: 6, 
+    color: "#888", 
+    fontStyle: "italic" 
+  },
+  navBar: { 
+    flexDirection: "row", 
+    justifyContent: "space-around", 
+    backgroundColor: "#2e8b57", 
+    paddingVertical: 10, 
+    borderRadius: 20, 
+    position: "absolute", 
+    bottom: 10, left: 10, 
+    right: 10 
+  },
+  navItem: { 
+    alignItems: "center" 
+  },
+  navText: { 
+    color: "#fff", 
+    fontSize: 12, 
+    marginTop: 3 
+  },
 });
